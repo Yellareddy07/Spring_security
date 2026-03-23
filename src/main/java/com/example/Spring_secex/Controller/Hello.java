@@ -1,6 +1,7 @@
 package com.example.Spring_secex.Controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,10 @@ public class Hello {
     @GetMapping("/sessionid")
     public String getsessionid(HttpServletRequest request){
         return request.getSession().getId();
-        
+    }
+
+    @GetMapping("/csrftoken")
+    public CsrfToken getcsrftoken(HttpServletRequest request){
+        return (CsrfToken) request.getAttribute("_csrf");
     }
 }
